@@ -1,6 +1,7 @@
 import React from 'react';
 import '../src/style.css';
 import { Player } from './components/Player';
+import { GameBoard } from './components/GameBoard';
 import { useState } from 'react';
 
 export const App = () => {
@@ -25,6 +26,7 @@ export const App = () => {
                 </div>
 
                 {/* BOARD */}
+                <GameBoard></GameBoard>
             </div>
         </div>
    </main>

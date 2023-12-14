@@ -36,6 +36,7 @@ body{
             width: 550px;
             background: lighten($dark-blue, 5%);
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
             position: relative;
@@ -153,6 +154,28 @@ body{
                 }
             }
 
+            .game-board{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                ul{
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: row;
+                    width: 85%;
+                    margin: 10px 0;
+
+                    li{
+                        width: 130px;
+                        height: 130px;
+                        background: $pink;
+                        list-style: none;
+                    }
+                }
+            }
         }
     }
 }

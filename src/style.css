@@ -28,6 +28,7 @@ body .gaming-field-container .gaming-field {
   width: 550px;
   background: #010157;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
   position: relative;
@@ -122,4 +123,24 @@ body .gaming-field-container .gaming-field .players .player .name-input {
 }
 body .gaming-field-container .gaming-field .players .player .name-input:focus-visible {
   outline: 0;
+}
+body .gaming-field-container .gaming-field .game-board {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body .gaming-field-container .gaming-field .game-board ul {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 85%;
+  margin: 10px 0;
+}
+body .gaming-field-container .gaming-field .game-board ul li {
+  width: 130px;
+  height: 130px;
+  background: #e608cc;
+  list-style: none;
 }/*# sourceMappingURL=style.css.map */
