@@ -6,9 +6,11 @@ import { useState } from 'react';
 
 export const App = () => {
     const [playerTurn, setPlayerTurn] = useState('X');
+    
 
-    function handlePlayerTurn(){
+    function setPlayerMove(){
         playerTurn === 'X' ? setPlayerTurn('O') : setPlayerTurn('X')
+        
     }
     
   return (
@@ -26,7 +28,7 @@ export const App = () => {
                 </div>
 
                 {/* BOARD */}
-                <GameBoard></GameBoard>
+                <GameBoard setPlayerMove={setPlayerMove} turn={playerTurn}></GameBoard>
             </div>
         </div>
    </main>
