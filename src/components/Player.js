@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
-export const Player = ({name, sign, turn}) => {
+export const Player = ({name, sign, isActive, setNewPlayerName}) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [playerName,setPlayerName] = useState(name);
-    const setPlayerTurnClass = turn === sign ? ' active' : null;
+    const [inputName, setInputName] = useState(name)
+    const setPlayerTurnClass = isActive ? ' active' : null;
     const editActionBtnClass = isEditing ? ' active' : null;
 
     function handleClick(){
@@ -13,19 +13,21 @@ export const Player = ({name, sign, turn}) => {
 
   return (
     <div className={'player ' + setPlayerTurnClass}>
-      {!isEditing ? 
-        <span className="name">{playerName}</span> 
-        : 
-        <input 
+      {!isEditing 
+        ? <span className="name">{name}</span> 
+        : <input 
             className="name-input" 
             type="text" 
-            value={playerName} 
-            onChange={(e) => setPlayerName(e.target.value)}></input>}
-      
+            value={inputName} 
+            onChange={(e) => setInputName(e.target.value)}></input>
+      }
       <span className="sign">{sign}</span>
       <button 
         className={'action-btn ' + editActionBtnClass}
-        onClick={handleClick}>
+        onClick={() => {
+          handleClick();
+          isEditing && setNewPlayerName(sign, inputName)
+        }}>
         {isEditing ? 'Save' : 'Edit'}
         </button>
     </div>

@@ -8,6 +8,10 @@ $dark-blue: rgb(1, 1, 62);
     padding: 0;
 }
 
+ul li{
+    list-style: none;
+}
+
 
 
 body{
@@ -30,6 +34,7 @@ body{
         width: 100%;
         display: flex;
         justify-content: center;
+        gap: 100px;
 
         .gaming-field{
             height: 550px;
@@ -189,6 +194,26 @@ body{
                         }
                     }
                 }
+            }
+        }
+
+        .chronology{
+            max-width: 220px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            border: 1px solid $pirple;
+            border-radius: 5px;
+
+            h4{
+                margin-bottom: 20px;
+            }
+
+            li{
+                margin: 10px 0;
             }
         }
     }

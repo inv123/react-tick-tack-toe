@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+ul li {
+  list-style: none;
+}
+
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background: rgb(1, 1, 62);
@@ -22,6 +26,7 @@ body .gaming-field-container {
   width: 100%;
   display: flex;
   justify-content: center;
+  gap: 100px;
 }
 body .gaming-field-container .gaming-field {
   height: 550px;
@@ -156,4 +161,21 @@ body .gaming-field-container .gaming-field .game-board ul li button {
   background: none;
   border: none;
   cursor: pointer;
+}
+body .gaming-field-container .chronology {
+  max-width: 220px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #8800ff;
+  border-radius: 5px;
+}
+body .gaming-field-container .chronology h4 {
+  margin-bottom: 20px;
+}
+body .gaming-field-container .chronology li {
+  margin: 10px 0;
 }/*# sourceMappingURL=style.css.map */

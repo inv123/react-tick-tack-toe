@@ -4,14 +4,32 @@ import { Player } from './components/Player';
 import { GameBoard } from './components/GameBoard';
 import { useState } from 'react';
 
-export const App = () => {
-    const [playerTurn, setPlayerTurn] = useState('X');
-    
-
-    function setPlayerMove(){
-        playerTurn === 'X' ? setPlayerTurn('O') : setPlayerTurn('X')
-        
+const PLAYERS = [
+    {
+        name: 'Player 1',
+        sign: 'X',
+        isActive: true
+    },
+    {
+        name: 'Player 2',
+        sign: 'O',
+        isActive: false
     }
+]
+
+
+export const App = () => {
+   const [playerInfo, setPlayerInfo] = useState(PLAYERS) 
+   
+   function setNewPlayerName(sign, inputName){
+       const updatePlayer = [...playerInfo].map((player) => {
+            if(player.sign == sign){
+                return {... player, name: inputName}
+            }
+            return player
+       })
+       setPlayerInfo(updatePlayer)
+   }
     
   return (
    <main>
@@ -23,12 +41,21 @@ export const App = () => {
             <div className='gaming-field'>
                 {/* PLAYERS */}
                 <div className='players'>
-                    <Player name='Player 1' sign={'X'} turn={playerTurn}></Player>
-                    <Player name='Player 2' sign={'O'} turn={playerTurn}></Player>
+                    {playerInfo.map((player, index) => (
+                        <Player key={index} name={player.name} sign={player.sign} isActive={player.isActive} setNewPlayerName={setNewPlayerName}/>
+                    ))}
                 </div>
 
                 {/* BOARD */}
-                <GameBoard setPlayerMove={setPlayerMove} turn={playerTurn}></GameBoard>
+                <GameBoard ></GameBoard>
+            </div>
+            <div className='chronology'>
+                <h4>Chronology</h4>
+                <ul>
+                    {/* {chronology.map((history, index) => (
+                        <li key={index}>{history.player} mark {history.mark} on row{history.row} and col {history.col}</li>
+                    ))} */}
+                </ul>
             </div>
         </div>
    </main>
