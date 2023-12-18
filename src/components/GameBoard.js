@@ -15,7 +15,10 @@ export const GameBoard = ({players, changeTurn}) => {
     function handleClickGameBoard(rowIndex, colIndex){
         setGameBoard((prevGameBoard) => {
             const upatedGameBoard = [...prevGameBoard].map((innerArray) => [...innerArray]);
-            upatedGameBoard[rowIndex][colIndex] = activePlayer;
+            if(upatedGameBoard[rowIndex][colIndex] == null){
+                upatedGameBoard[rowIndex][colIndex] = activePlayer;
+                
+            }
 
             return upatedGameBoard
         })
@@ -31,7 +34,9 @@ export const GameBoard = ({players, changeTurn}) => {
                     <li key={colIndex}
                         onClick={() => {
                             handleClickGameBoard(rowIndex, colIndex)
-                            changeTurn()
+                            if(col == null){
+                                changeTurn()
+                            }
                         }} >
                         {col}
                     </li>
