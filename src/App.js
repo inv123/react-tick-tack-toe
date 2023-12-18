@@ -35,7 +35,7 @@ export const App = () => {
                 </div>
 
                 {/* BOARD */}
-                <GameBoard ></GameBoard>
+                <GameBoard players={playerInfo}></GameBoard>
             </div>
             <div className='chronology'>
                 <h4>Chronology</h4>
