@@ -18,6 +18,15 @@ export const App = () => {
        })
        setPlayerInfo(updatePlayer)
    }
+
+   function handleChangeTurn(){
+       const updatePlayer = [...playerInfo].map((player) => {
+            const isActive = player.isActive
+            return {...player, isActive: !isActive}
+       })
+
+       setPlayerInfo(updatePlayer)
+   }
     
   return (
    <main>
@@ -35,7 +44,7 @@ export const App = () => {
                 </div>
 
                 {/* BOARD */}
-                <GameBoard players={playerInfo}></GameBoard>
+                <GameBoard players={playerInfo} changeTurn={handleChangeTurn}></GameBoard>
             </div>
             <div className='chronology'>
                 <h4>Chronology</h4>

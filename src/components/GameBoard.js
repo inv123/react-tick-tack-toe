@@ -8,7 +8,7 @@ const initialGameBoard = [
     [null, null, null]
 ]
 
-export const GameBoard = ({players}) => {
+export const GameBoard = ({players, changeTurn}) => {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
     const activePlayer = players.filter(x => x.isActive == true)[0].sign;
 
@@ -31,6 +31,7 @@ export const GameBoard = ({players}) => {
                     <li key={colIndex}
                         onClick={() => {
                             handleClickGameBoard(rowIndex, colIndex)
+                            changeTurn()
                         }} >
                         {col}
                     </li>
