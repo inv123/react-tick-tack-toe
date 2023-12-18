@@ -7,7 +7,8 @@ import { PLAYERS } from './initials';
 
 
 export const App = () => {
-   const [playerInfo, setPlayerInfo] = useState(PLAYERS) 
+   const [playerInfo, setPlayerInfo] = useState(PLAYERS);
+   const [history, setHistory] = useState([]); 
    
    function setNewPlayerName(sign, inputName){
        const updatePlayer = [...playerInfo].map((player) => {
@@ -27,6 +28,11 @@ export const App = () => {
 
        setPlayerInfo(updatePlayer)
    }
+
+   function handleUpdateHistory(player, sign, row, col){
+        const updatedHistory = [...history, {player, sign, row, col}]
+        setHistory(updatedHistory);
+   }
     
   return (
    <main>
@@ -44,14 +50,14 @@ export const App = () => {
                 </div>
 
                 {/* BOARD */}
-                <GameBoard players={playerInfo} changeTurn={handleChangeTurn}></GameBoard>
+                <GameBoard players={playerInfo} changeTurn={handleChangeTurn} updateHistory={handleUpdateHistory}></GameBoard>
             </div>
             <div className='chronology'>
                 <h4>Chronology</h4>
                 <ul>
-                    {/* {chronology.map((history, index) => (
-                        <li key={index}>{history.player} mark {history.mark} on row{history.row} and col {history.col}</li>
-                    ))} */}
+                    {history.map((row, index) => (
+                        <li key={index}>{row.player} mark {row.sign} on row:{row.row} and col: {row.col}</li>
+                    ))}
                 </ul>
             </div>
         </div>

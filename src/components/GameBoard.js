@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { WINNING_COMBINATIONS } from '../initials';
 
 
 const initialGameBoard = [
@@ -8,9 +9,11 @@ const initialGameBoard = [
     [null, null, null]
 ]
 
-export const GameBoard = ({players, changeTurn}) => {
+export const GameBoard = ({players, changeTurn, updateHistory}) => {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
     const activePlayer = players.filter(x => x.isActive == true)[0].sign;
+    const activePlayerName = players.filter(x => x.isActive == true)[0].name;
+    const activePlayerSign = players.filter(x => x.isActive == true)[0].sign;
 
     function handleClickGameBoard(rowIndex, colIndex){
         setGameBoard((prevGameBoard) => {
@@ -25,6 +28,7 @@ export const GameBoard = ({players, changeTurn}) => {
     }
 
     
+    
 
   return (
     <div className='game-board' >
@@ -35,7 +39,8 @@ export const GameBoard = ({players, changeTurn}) => {
                         onClick={() => {
                             handleClickGameBoard(rowIndex, colIndex)
                             if(col == null){
-                                changeTurn()
+                                changeTurn();
+                                updateHistory(activePlayerName, activePlayerSign, rowIndex, colIndex);
                             }
                         }} >
                         {col}
