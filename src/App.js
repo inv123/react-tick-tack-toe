@@ -3,19 +3,7 @@ import '../src/style.css';
 import { Player } from './components/Player';
 import { GameBoard } from './components/GameBoard';
 import { useState } from 'react';
-
-const PLAYERS = [
-    {
-        name: 'Player 1',
-        sign: 'X',
-        isActive: true
-    },
-    {
-        name: 'Player 2',
-        sign: 'O',
-        isActive: false
-    }
-]
+import { PLAYERS } from './initials';
 
 
 export const App = () => {
