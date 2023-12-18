@@ -13,22 +13,27 @@ body {
   background: rgb(1, 1, 62);
   color: #fff;
 }
-body .heading {
+body main {
+  position: relative;
+}
+body main .heading {
   display: flex;
   width: 100%;
   justify-content: center;
   margin: 40px 0;
 }
-body .heading h1 {
+body main .heading h1 {
   font-size: 52px;
+  margin-top: 0;
+  padding-top: 30px;
 }
-body .gaming-field-container {
+body main .gaming-field-container {
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 100px;
 }
-body .gaming-field-container .gaming-field {
+body main .gaming-field-container .gaming-field {
   height: 550px;
   width: 550px;
   background: #010157;
@@ -40,7 +45,7 @@ body .gaming-field-container .gaming-field {
   z-index: 3;
   border-radius: 5px;
 }
-body .gaming-field-container .gaming-field:before {
+body main .gaming-field-container .gaming-field:before {
   content: "";
   display: block;
   width: 550px;
@@ -52,7 +57,7 @@ body .gaming-field-container .gaming-field:before {
   border-radius: 5px;
   box-shadow: -2px -2px 14px 5px rgb(230, 8, 204);
 }
-body .gaming-field-container .gaming-field:after {
+body main .gaming-field-container .gaming-field:after {
   content: "";
   display: block;
   width: 550px;
@@ -64,13 +69,13 @@ body .gaming-field-container .gaming-field:after {
   border-radius: 5px;
   box-shadow: 5px 5px 14px 0px rgb(136, 0, 255);
 }
-body .gaming-field-container .gaming-field .players {
+body main .gaming-field-container .gaming-field .players {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 45px;
 }
-body .gaming-field-container .gaming-field .players .player {
+body main .gaming-field-container .gaming-field .players .player {
   flex: 0 0 50%;
   display: flex;
   justify-content: center;
@@ -78,11 +83,11 @@ body .gaming-field-container .gaming-field .players .player {
   padding: 10px 25px;
   border: 2px solid transparent;
 }
-body .gaming-field-container .gaming-field .players .player.active {
+body main .gaming-field-container .gaming-field .players .player.active {
   border: 2px solid #e608cc;
   position: relative;
 }
-body .gaming-field-container .gaming-field .players .player.active:before {
+body main .gaming-field-container .gaming-field .players .player.active:before {
   content: "";
   position: absolute;
   top: -4px;
@@ -91,7 +96,7 @@ body .gaming-field-container .gaming-field .players .player.active:before {
   height: calc(100% + 4px);
   border: 2px solid #520349;
 }
-body .gaming-field-container .gaming-field .players .player .name {
+body main .gaming-field-container .gaming-field .players .player .name {
   width: 50%;
   width: 100px;
   padding-left: 10px;
@@ -100,10 +105,10 @@ body .gaming-field-container .gaming-field .players .player .name {
   white-space: nowrap;
   overflow: hidden;
 }
-body .gaming-field-container .gaming-field .players .player .sign {
+body main .gaming-field-container .gaming-field .players .player .sign {
   margin: 0 10px;
 }
-body .gaming-field-container .gaming-field .players .player .action-btn {
+body main .gaming-field-container .gaming-field .players .player .action-btn {
   background: none;
   border: none;
   color: #b866ff;
@@ -111,10 +116,10 @@ body .gaming-field-container .gaming-field .players .player .action-btn {
   z-index: 8;
   margin-left: 20px;
 }
-body .gaming-field-container .gaming-field .players .player .action-btn.active {
+body main .gaming-field-container .gaming-field .players .player .action-btn.active {
   color: #e608cc;
 }
-body .gaming-field-container .gaming-field .players .player .name-input {
+body main .gaming-field-container .gaming-field .players .player .name-input {
   background: none;
   border: none;
   color: #fff;
@@ -126,10 +131,10 @@ body .gaming-field-container .gaming-field .players .player .name-input {
   font-size: 1rem;
   padding-bottom: 2px;
 }
-body .gaming-field-container .gaming-field .players .player .name-input:focus-visible {
+body main .gaming-field-container .gaming-field .players .player .name-input:focus-visible {
   outline: 0;
 }
-body .gaming-field-container .gaming-field .game-board {
+body main .gaming-field-container .gaming-field .game-board {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -137,14 +142,14 @@ body .gaming-field-container .gaming-field .game-board {
   flex-direction: column;
   z-index: 10;
 }
-body .gaming-field-container .gaming-field .game-board ul {
+body main .gaming-field-container .gaming-field .game-board ul {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   width: 85%;
   margin: 10px 0;
 }
-body .gaming-field-container .gaming-field .game-board ul li {
+body main .gaming-field-container .gaming-field .game-board ul li {
   width: 130px;
   height: 130px;
   background: #e608cc;
@@ -155,14 +160,14 @@ body .gaming-field-container .gaming-field .game-board ul li {
   font-size: 70px;
   cursor: pointer;
 }
-body .gaming-field-container .gaming-field .game-board ul li button {
+body main .gaming-field-container .gaming-field .game-board ul li button {
   width: 100%;
   height: 100%;
   background: none;
   border: none;
   cursor: pointer;
 }
-body .gaming-field-container .chronology {
+body main .gaming-field-container .chronology {
   max-width: 220px;
   width: 100%;
   display: flex;
@@ -173,9 +178,59 @@ body .gaming-field-container .chronology {
   border: 1px solid #8800ff;
   border-radius: 5px;
 }
-body .gaming-field-container .chronology h4 {
+body main .gaming-field-container .chronology h4 {
   margin-bottom: 20px;
 }
-body .gaming-field-container .chronology li {
+body main .gaming-field-container .chronology li {
   margin: 10px 0;
+}
+body main .winner {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background: transparent;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body main .winner .overlay {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: black;
+  opacity: 0.7;
+}
+body main .winner .winner-block {
+  width: 500px;
+  height: 500px;
+  background: #e608cc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+body main .winner .winner-block h2 {
+  font-size: 50px;
+}
+body main .winner .winner-block .rematch-btn {
+  background: #8800ff;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 0px 0px 15px 5px rgb(136, 0, 255);
+  cursor: pointer;
+  transition: 0.3s all ease;
+  font-size: 20px;
+  font-weight: 500;
+}
+body main .winner .winner-block .rematch-btn:hover {
+  background: #fff;
+  color: #e608cc;
 }/*# sourceMappingURL=style.css.map */

@@ -61,6 +61,15 @@ export const App = () => {
                 </ul>
             </div>
         </div>
+
+        <div className='winner'>
+            <div className='overlay'></div>
+            <div className='winner-block'>
+                    <h2>Game over!</h2>
+                    <p>Player 1 won!</p>
+                    <button className='rematch-btn'>Rematch!</button>
+            </div>
+        </div>
    </main>
   )
 }
