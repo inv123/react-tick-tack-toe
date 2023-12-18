@@ -9,7 +9,7 @@ const initialGameBoard = [
     [null, null, null]
 ]
 
-export const GameBoard = ({players, changeTurn, updateHistory}) => {
+export const GameBoard = ({players, changeTurn, updateHistory, handleWinner}) => {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
     const activePlayer = players.filter(x => x.isActive == true)[0].sign;
     const activePlayerName = players.filter(x => x.isActive == true)[0].name;
@@ -19,15 +19,16 @@ export const GameBoard = ({players, changeTurn, updateHistory}) => {
         setGameBoard((prevGameBoard) => {
             const upatedGameBoard = [...prevGameBoard].map((innerArray) => [...innerArray]);
             if(upatedGameBoard[rowIndex][colIndex] == null){
-                upatedGameBoard[rowIndex][colIndex] = activePlayer;
-                
+                upatedGameBoard[rowIndex][colIndex] = activePlayer;   
             }
-
-            return upatedGameBoard
+            return upatedGameBoard;
         })
     }
 
-    
+    function checkForWinner(){
+        
+        handleWinner(activePlayer);
+    }
     
 
   return (
@@ -40,6 +41,7 @@ export const GameBoard = ({players, changeTurn, updateHistory}) => {
                             handleClickGameBoard(rowIndex, colIndex)
                             if(col == null){
                                 changeTurn();
+                                checkForWinner();
                                 updateHistory(activePlayerName, activePlayerSign, rowIndex, colIndex);
                             }
                         }} >
