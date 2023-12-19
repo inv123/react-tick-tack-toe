@@ -28,7 +28,7 @@ export const App = () => {
       firstSquareSymbol === secondSquareSymbol &&
       secondSquareSymbol === thirdSquareSymbol
     ) {
-      winner = firstSquareSymbol;
+      winner = playerInfo.filter(x => x.sign == firstSquareSymbol)[0].name;
     }
   }
 
