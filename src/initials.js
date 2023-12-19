@@ -53,3 +53,9 @@ export const WINNING_COMBINATIONS=[
         {row: 2, col: 0}
     ],
 ]
+
+export const initialGameBoard = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+]

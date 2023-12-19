@@ -4,11 +4,34 @@ import { Player } from "./components/Player";
 import { GameBoard } from "./components/GameBoard";
 import { useState } from "react";
 import { PLAYERS } from "./initials";
+import { WINNING_COMBINATIONS, initialGameBoard } from "./initials";
+import { Winner } from "./components/Winner";
 
 export const App = () => {
   const [playerInfo, setPlayerInfo] = useState(PLAYERS);
   const [history, setHistory] = useState([]);
-  const [winner, setWinner] = useState();
+  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+
+  let winner;
+
+  const activePlayer = playerInfo.filter((x) => x.isActive == true)[0].name;
+  const activePlayerSign = playerInfo.filter((x) => x.isActive == true)[0].sign;
+
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstSquareSymbol = gameBoard[combination[0].row][combination[0].col];
+    const secondSquareSymbol =
+      gameBoard[combination[1].row][combination[1].col];
+    const thirdSquareSymbol = gameBoard[combination[2].row][combination[2].col];
+
+    if (
+      firstSquareSymbol &&
+      firstSquareSymbol === secondSquareSymbol &&
+      secondSquareSymbol === thirdSquareSymbol
+    ) {
+      winner = firstSquareSymbol;
+    }
+  }
+
 
   function setNewPlayerName(sign, inputName) {
     const updatePlayer = [...playerInfo].map((player) => {
@@ -26,16 +49,52 @@ export const App = () => {
       return { ...player, isActive: !isActive };
     });
 
-    setPlayerInfo(updatePlayer);
+    if (!winner) {
+      setPlayerInfo(updatePlayer);
+    }
   }
 
-  function handleUpdateHistory(player, sign, row, col) {
-    const updatedHistory = [...history, { player, sign, row, col }];
+  function handleUpdateHistory(row, col) {
+    const updatedHistory = [
+      ...history,
+      { player: activePlayer, sign: activePlayerSign, row, col },
+    ];
     setHistory(updatedHistory);
   }
 
-  function handleWinner(player){
-     setWinner(player);
+  function handleClickGameBoard(rowIndex, colIndex) {
+    if (!winner) {
+      handleChangeTurn();
+    }
+    setGameBoard((prevGameBoard) => {
+      const upatedGameBoard = [...prevGameBoard].map((innerArray) => [
+        ...innerArray,
+      ]);
+      if (upatedGameBoard[rowIndex][colIndex] == null) {
+        upatedGameBoard[rowIndex][colIndex] = activePlayerSign;
+        handleUpdateHistory(rowIndex, colIndex);
+      }
+
+      return upatedGameBoard;
+    });
+  }
+
+  function handleResetGame(){
+    setPlayerInfo(prevInfo => {
+      const updatedPlayers = [...prevInfo].map(player => {
+        if(player.sign == 'X'){
+          return {...player, isActive: true}
+        }else{
+          return {...player, isActive: false}
+        }
+      })
+
+      return updatedPlayers
+    })
+
+    
+    setGameBoard(initialGameBoard)
+    setHistory([])
   }
 
   return (
@@ -61,10 +120,8 @@ export const App = () => {
 
           {/* BOARD */}
           <GameBoard
-            players={playerInfo}
-            changeTurn={handleChangeTurn}
-            updateHistory={handleUpdateHistory}
-            handleWinner={handleWinner}
+            board={gameBoard}
+            handleClickGameBoard={handleClickGameBoard}
           ></GameBoard>
         </div>
         <div className="chronology">
@@ -80,14 +137,7 @@ export const App = () => {
       </div>
 
       {winner && (
-        <div className="winner">
-          <div className="overlay"></div>
-          <div className="winner-block">
-            <h2>Game over!</h2>
-            <p>{winner} won!</p>
-            <button className="rematch-btn">Rematch!</button>
-          </div>
-        </div>
+       <Winner winner={winner} handleResetGame={handleResetGame}/>
       )}
     </main>
   );
