@@ -6,7 +6,7 @@ export const Winner = ({winner, handleResetGame}) => {
       <div className="overlay"></div>
       <div className="winner-block">
         <h2>Game over!</h2>
-        <p>{winner} won!</p>
+        {winner !== 'Draw' ? <p>{winner} won!</p> : <p>{winner}!</p>}
         <button className="rematch-btn" onClick={handleResetGame}>Rematch!</button>
       </div>
     </div>

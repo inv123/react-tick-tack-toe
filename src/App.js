@@ -14,6 +14,10 @@ export const App = () => {
 
   let winner;
 
+  if(history.length == 9){
+    winner = 'Draw'
+  }
+
   const activePlayer = playerInfo.filter((x) => x.isActive == true)[0].name;
   const activePlayerSign = playerInfo.filter((x) => x.isActive == true)[0].sign;
 
@@ -32,6 +36,7 @@ export const App = () => {
     }
   }
 
+  
 
   function setNewPlayerName(sign, inputName) {
     const updatePlayer = [...playerInfo].map((player) => {
