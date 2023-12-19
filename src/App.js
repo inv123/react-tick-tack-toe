@@ -14,12 +14,12 @@ export const App = () => {
 
   let winner;
 
-  if(history.length == 9){
+  if(history.length === 9){
     winner = 'Draw'
   }
 
-  const activePlayer = playerInfo.filter((x) => x.isActive == true)[0].name;
-  const activePlayerSign = playerInfo.filter((x) => x.isActive == true)[0].sign;
+  const activePlayer = playerInfo.filter((x) => x.isActive === true)[0].name;
+  const activePlayerSign = playerInfo.filter((x) => x.isActive === true)[0].sign;
 
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquareSymbol = gameBoard[combination[0].row][combination[0].col];
@@ -32,7 +32,7 @@ export const App = () => {
       firstSquareSymbol === secondSquareSymbol &&
       secondSquareSymbol === thirdSquareSymbol
     ) {
-      winner = playerInfo.filter(x => x.sign == firstSquareSymbol)[0].name;
+      winner = playerInfo.filter(x => x.sign === firstSquareSymbol)[0].name;
     }
   }
 
@@ -40,7 +40,7 @@ export const App = () => {
 
   function setNewPlayerName(sign, inputName) {
     const updatePlayer = [...playerInfo].map((player) => {
-      if (player.sign == sign) {
+      if (player.sign === sign) {
         return { ...player, name: inputName };
       }
       return player;
@@ -87,7 +87,7 @@ export const App = () => {
   function handleResetGame(){
     setPlayerInfo(prevInfo => {
       const updatedPlayers = [...prevInfo].map(player => {
-        if(player.sign == 'X'){
+        if(player.sign === 'X'){
           return {...player, isActive: true}
         }else{
           return {...player, isActive: false}
